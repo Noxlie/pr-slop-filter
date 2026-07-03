@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="620" font-family="'JetBrains Mono', 'Fira Code', 'SF Mono', monospace" font-size="13">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1b26"/>
+      <stop offset="100%" style="stop-color:#16161e"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Terminal window -->
+  <rect x="10" y="10" width="800" height="600" rx="12" fill="url(#bg)" stroke="#33467c" stroke-width="1" filter="url(#shadow)"/>
+
+  <!-- Title bar -->
+  <rect x="10" y="10" width="800" height="36" rx="12" fill="#24283b"/>
+  <rect x="10" y="34" width="800" height="12" fill="#24283b"/>
+  <circle cx="32" cy="28" r="6" fill="#f7768e"/>
+  <circle cx="52" cy="28" r="6" fill="#e0af68"/>
+  <circle cx="72" cy="28" r="6" fill="#9ece6a"/>
+  <text x="410" y="33" text-anchor="middle" fill="#565f89" font-size="12">pr-slop-filter</text>
+
+  <!-- Content area -->
+  <text x="30" y="72" fill="#7aa2f7">$</text>
+  <text x="46" y="72" fill="#c0caf5">npx pr-slop check --repo Noxlie/example --pr 42</text>
+
+  <text x="30" y="102" fill="#565f89">⠋ Fetching PR #42...</text>
+
+  <text x="30" y="138" fill="#c0caf5" font-weight="bold">🔍 PR Slop Filter — #42: Fix memory leak in connection pool</text>
+  <text x="30" y="155" fill="#3b4261">────────────────────────────────────────────────────────────────────</text>
+
+  <!-- Overall Score -->
+  <text x="30" y="182" fill="#c0caf5" font-weight="bold">Overall Score:</text>
+  <text x="155" y="182" fill="#f7768e" font-weight="bold">82/100</text>
+  <text x="210" y="182" fill="#f7768e">SLOP</text>
+  <text x="30" y="198" fill="#3b4261">────────────────────────────────────────────────────────────────────</text>
+
+  <!-- Score bar -->
+  <text x="30" y="224" fill="#565f89">Score: </text>
+  <rect x="85" y="213" width="200" height="14" rx="3" fill="#1e2030"/>
+  <rect x="85" y="213" width="164" height="14" rx="3" fill="#f7768e"/>
+  <text x="295" y="224" fill="#f7768e">82%</text>
+
+  <!-- Module breakdown -->
+  <text x="30" y="254" fill="#9ece6a" font-weight="bold">Modules:</text>
+
+  <text x="30" y="274" fill="#7aa2f7">  🔬 Heuristics</text>
+  <text x="180" y="274" fill="#565f89">[</text>
+  <text x="188" y="274" fill="#e0af68">████████</text>
+  <text x="268" y="274" fill="#3b4261">░░</text>
+  <text x="285" y="274" fill="#565f89">]</text>
+  <text x="300" y="274" fill="#e0af68">78/100</text>
+  <text x="360" y="274" fill="#565f89">12ms</text>
+
+  <text x="30" y="294" fill="#7aa2f7">  🔍 Diff Analysis</text>
+  <text x="180" y="294" fill="#565f89">[</text>
+  <text x="188" y="294" fill="#f7768e">█████████</text>
+  <text x="278" y="294" fill="#3b4261">░</text>
+  <text x="285" y="294" fill="#565f89">]</text>
+  <text x="300" y="294" fill="#f7768e">89/100</text>
+  <text x="360" y="294" fill="#565f89">3ms</text>
+
+  <text x="30" y="314" fill="#7aa2f7">  🤖 LLM Verifier</text>
+  <text x="180" y="314" fill="#565f89">[</text>
+  <text x="188" y="314" fill="#e0af68">███████</text>
+  <text x="258" y="314" fill="#3b4261">░░░</text>
+  <text x="285" y="314" fill="#565f89">]</text>
+  <text x="300" y="314" fill="#e0af68">72/100</text>
+  <text x="360" y="314" fill="#565f89">1.2s</text>
+
+  <text x="30" y="340" fill="#3b4261">────────────────────────────────────────────────────────────────────</text>
+
+  <!-- Findings -->
+  <text x="30" y="362" fill="#f7768e" font-weight="bold">Findings:</text>
+
+  <text x="30" y="386" fill="#f7768e">  🚩</text>
+  <text x="62" y="386" fill="#c0caf5">PR claims "memory leak fix" but 60% of changes are comments</text>
+
+  <text x="30" y="406" fill="#f7768e">  🚩</text>
+  <text x="62" y="406" fill="#c0caf5">Description perplexity: 0.12 (avg human: 0.45)</text>
+
+  <text x="30" y="426" fill="#f7768e">  🚩</text>
+  <text x="62" y="426" fill="#c0caf5">AI phrase detected: "This PR aims to address..."</text>
+
+  <text x="30" y="446" fill="#e0af68">  ⚠️</text>
+  <text x="62" y="446" fill="#c0caf5">Emoji count: 7 in description (avg human: 0-1)</text>
+
+  <text x="30" y="466" fill="#e0af68">  ⚠️</text>
+  <text x="62" y="466" fill="#c0caf5">No test file changes for a "bug fix" PR</text>
+
+  <text x="30" y="486" fill="#565f89">  ℹ️</text>
+  <text x="62" y="486" fill="#c0caf5">Touches 6 files across 4 directories</text>
+
+  <text x="30" y="512" fill="#3b4261">────────────────────────────────────────────────────────────────────</text>
+
+  <!-- Verdict -->
+  <text x="30" y="538" fill="#c0caf5" font-weight="bold">Verdict:</text>
+  <text x="105" y="538" fill="#f7768e" font-weight="bold">SLOP</text>
+  <text x="145" y="538" fill="#565f89">— Confidence: 85% — Threshold: 70</text>
+
+  <text x="30" y="558" fill="#565f89">💡 Recommendation: REVIEW MANUALLY — likely AI-generated contribution</text>
+
+  <!-- Exit code -->
+  <text x="30" y="590" fill="#7aa2f7">$</text>
+  <text x="46" y="590" fill="#565f89">echo $?  # → 1 (above threshold)</text>
+  <rect x="30" y="595" width="8" height="2" fill="#565f89" opacity="0.7">
+    <animate attributeName="opacity" values="0.7;0;0.7" dur="1s" repeatCount="indefinite"/>
+  </rect>
+</svg>

@@ -15,6 +15,12 @@
 
 </div>
 
+<div align="center">
+
+![pr-slop-filter demo](demo.svg)
+
+</div>
+
 ---
 
 ## 🔥 The Problem
