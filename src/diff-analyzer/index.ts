@@ -11,13 +11,6 @@ import type { PRContext, ModuleResult, Finding, FileChange } from '../types.js';
 
 // ─── Constants ──────────────────────────────────────────────────────────────
 
-const COMMENT_PATTERNS: Record<string, RegExp> = {
-  singleLine: /^\s*(\/\/|#|;|\*|<!--)\s/m,
-  blockStart: /^\s*(\/\*|""")/m,
-  blockEnd: /^\s*(\*\/|""")/m,
-  htmlComment: /<!--[\s\S]*?-->/g,
-};
-
 const CLAIM_KEYWORDS = {
   fix: /\b(fix|fixes|fixed|bug|bugfix|patch|resolve|resolves|resolved|issue)\b/i,
   feature: /\b(feat|feature|add|adds|added|implement|implements|new)\b/i,
@@ -290,14 +283,11 @@ function detectUnrelatedFiles(pr: PRContext): Finding {
 function detectCommentRatio(pr: PRContext): Finding {
   let totalCode = 0;
   let totalComments = 0;
-  let totalBlank = 0;
-
   for (const file of pr.files_changed) {
     if (!file.patch) continue;
-    const { code, comments, blank } = countCodeLines(file.patch);
+    const { code, comments } = countCodeLines(file.patch);
     totalCode += code;
     totalComments += comments;
-    totalBlank += blank;
   }
 
   const total = totalCode + totalComments;
@@ -481,8 +471,6 @@ function detectStyleOnlyChanges(pr: PRContext): Finding {
  */
 function detectDiffSize(pr: PRContext): Finding {
   const combined = `${pr.title} ${pr.body}`.toLowerCase();
-  const isSmallClaim =
-    /\b(typo|minor|small|quick|trivial|simple)\b/i.test(combined);
   const isBigClaim =
     /\b(overhaul|rewrite|major|large|complete|comprehensive|entire)\b/i.test(combined);
 
