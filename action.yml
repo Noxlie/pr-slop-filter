@@ -1,0 +1,44 @@
+name: 'PR Slop Filter'
+description: 'Detect AI-generated slop PRs before they waste maintainers time'
+
+inputs:
+  threshold:
+    description: 'Slop score threshold (0-100) — PRs above this are flagged'
+    required: false
+    default: '70'
+  fail-on-slop:
+    description: 'Fail the action if the slop score exceeds the threshold'
+    required: false
+    default: 'true'
+  format:
+    description: 'Output format: text, json, or github-annotation'
+    required: false
+    default: 'github-annotation'
+  llm-provider:
+    description: 'LLM provider for enhanced detection (openai, anthropic, local)'
+    required: false
+    default: ''
+  llm-api-key:
+    description: 'API key for the LLM provider'
+    required: false
+    default: ''
+  llm-model:
+    description: 'LLM model name (e.g. gpt-4o-mini, claude-3-haiku)'
+    required: false
+    default: ''
+
+outputs:
+  slop-score:
+    description: 'The overall slop score (0-100)'
+  verdict:
+    description: 'Verdict: human, uncertain, likely-slop, or slop'
+  summary:
+    description: 'Human-readable summary of the slop analysis'
+
+runs:
+  using: 'node20'
+  main: 'dist/action/index.js'
+
+branding:
+  icon: 'shield'
+  color: 'red'
